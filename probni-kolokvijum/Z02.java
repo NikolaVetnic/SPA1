@@ -54,10 +54,13 @@ class Z02 {
 		lanacHotela.stampajLanac();
 		System.out.println();
 		
-		// zatvaranje hotela Sloboda (poslednjeg u nizu)
+		// zatvaranje hotela Sloboda i izbacivanje Hiltona
 		lanacHotela.zatvoriHotel("Sloboda");
+		lanacHotela.izbaciHotel("Hilton");
 		lanacHotela.stampajLanac();
 		System.out.println();
+		
+		System.out.println(lanacHotela + "\n");
 		
 	}
 }
@@ -170,15 +173,16 @@ class LanacHotela {
 		 */
 		
 		Hotel tekuciHotel = prviHotel;
-		boolean nadjen = false;
 		
-		while (tekuciHotel != null && !nadjen) {
+		while (tekuciHotel != null) {
+			
 			if (tekuciHotel.naziv.equals(naziv))
-				nadjen = true;
+				return tekuciHotel;
 			else
 				tekuciHotel = tekuciHotel.veza;
 		}
-		return tekuciHotel;
+		
+		return null;
 	}
 	
 	
@@ -216,6 +220,9 @@ class LanacHotela {
 		 */
 		
 		if (prviHotel != null) {
+			
+			if (prviHotel.naziv.equals(naziv))
+				prviHotel = prviHotel.veza;
 			
 			Hotel prethodniHotel = prviHotel;
 			boolean nadjen = false;
@@ -255,6 +262,10 @@ class LanacHotela {
 			Radnik pomocniRadnik;
 			
 			while (ciljniHotel.prviRadnik.staz / 10 != 0) {
+				
+				/**
+				 * prespajanje pomocu pomocnog radnika - zapamtiti
+				 */
 				
 				pomocniRadnik = ciljniHotel.prviRadnik.veza;
 				
@@ -331,7 +342,7 @@ class LanacHotela {
 	}
 	
 	
-	public void dodajRadnika(String ime, double plata, int staz, String naziv) {
+	public boolean dodajRadnika(String ime, double plata, int staz, String naziv) {
 		
 		/**
 		 * kreira se radnik i pronalazi se hotel, radnik se dodaje hot-
@@ -341,8 +352,17 @@ class LanacHotela {
 		Radnik noviRadnik = new Radnik(ime, plata, staz);
 		Hotel ciljniHotel = nadjiHotel(naziv);
 		
-		noviRadnik.veza = ciljniHotel.prviRadnik;
-		ciljniHotel.prviRadnik = noviRadnik;
+		if (ciljniHotel != null) {
+			
+			noviRadnik.veza = ciljniHotel.prviRadnik;
+			ciljniHotel.prviRadnik = noviRadnik;
+			return true;
+			
+		} else {
+			
+			System.out.println("Uneti hotel ne postoji.");
+			return false;
+		}
 	}
 	
 	
@@ -373,5 +393,20 @@ class LanacHotela {
 		} else {
 			System.out.println("Lanac hotela je prazan.");
 		}
+	}
+	
+	
+	public String toString() {
+		
+		String output = "Lanac hotela [ ";
+		
+		Hotel tekuciHotel = prviHotel;
+		
+		while (tekuciHotel != null) {
+			output += tekuciHotel.naziv + " ";
+			tekuciHotel = tekuciHotel.veza;
+		}
+		
+		return output + "]";
 	}
 }
