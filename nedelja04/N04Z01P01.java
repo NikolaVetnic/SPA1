@@ -16,7 +16,7 @@
  * ima je glumio zadati glumac.
  */
 
-class N04Z01 {
+class N04Z01P01 {
 	
 	public static void main(String[] args) {
 		
