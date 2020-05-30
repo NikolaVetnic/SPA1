@@ -18,7 +18,7 @@
  * am koji demonstrira napravljene metode.
  */
  
-class Z02 {
+class Z02P01 {
 	
 	public static void main(String[] args) {
 		
@@ -260,21 +260,6 @@ class LanacHotela {
 		if (ciljniHotel != null) {
 			
 			Radnik pomocniRadnik;
-			
-			while (ciljniHotel.prviRadnik.staz / 10 != 0) {
-				
-				/**
-				 * prespajanje pomocu pomocnog radnika - zapamtiti
-				 */
-				
-				pomocniRadnik = ciljniHotel.prviRadnik.veza;
-				
-				ciljniHotel.prviRadnik.veza = poslednjiHotel.prviRadnik;
-				poslednjiHotel.prviRadnik = ciljniHotel.prviRadnik;
-				
-				ciljniHotel.prviRadnik = pomocniRadnik;
-			}
-			
 			Radnik tekuciRadnik = ciljniHotel.prviRadnik;
 			
 			while (tekuciRadnik != null) {
