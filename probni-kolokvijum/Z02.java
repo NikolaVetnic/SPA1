@@ -252,13 +252,35 @@ class LanacHotela {
 		
 		if (ciljniHotel != null) {
 			
+			Radnik pomocniRadnik;
+			
+			while (ciljniHotel.prviRadnik.staz / 10 != 0) {
+				
+				pomocniRadnik = ciljniHotel.prviRadnik.veza;
+				
+				ciljniHotel.prviRadnik.veza = poslednjiHotel.prviRadnik;
+				poslednjiHotel.prviRadnik = ciljniHotel.prviRadnik;
+				
+				ciljniHotel.prviRadnik = pomocniRadnik;
+			}
+			
 			Radnik tekuciRadnik = ciljniHotel.prviRadnik;
 			
 			while (tekuciRadnik != null) {
-				if (tekuciRadnik.staz / 10 != 0)
-					dodajRadnika(tekuciRadnik.ime, tekuciRadnik.plata, tekuciRadnik.staz, poslednjiHotel.naziv);
 				
-				tekuciRadnik = tekuciRadnik.veza;
+				if (tekuciRadnik != null && tekuciRadnik.staz / 10 != 0) {
+					
+					pomocniRadnik = tekuciRadnik.veza;
+					
+					tekuciRadnik.veza = poslednjiHotel.prviRadnik;
+					poslednjiHotel.prviRadnik = tekuciRadnik;
+					
+					tekuciRadnik = pomocniRadnik;
+					
+				} else { 
+					
+					tekuciRadnik = tekuciRadnik.veza;
+				}
 			}
 			
 			izbaciHotel(naziv);
