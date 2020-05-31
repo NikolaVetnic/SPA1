@@ -14,7 +14,7 @@
  * je pre i posle poziva po potrebi.
  */
 
-class N03Z03 {
+class N03Z03P01 {
 	
 	public static void main(String[] args) {
 		

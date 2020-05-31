@@ -6,7 +6,7 @@
  * koristi jednostruko povezana lista.
  */
 
-class N03Z04 {
+class N03Z04P01 {
 	
 	public static void main(String[] args) {
 		

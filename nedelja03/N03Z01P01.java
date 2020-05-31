@@ -10,7 +10,7 @@
  * c) štampa poslednji element liste.
  */
 
-class N03Z01 {
+class N03Z01P01 {
 	
 	public static void main(String[] args) {
 		
