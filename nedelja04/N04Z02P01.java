@@ -16,7 +16,7 @@
  *    ti načisto.
  */
 
-class N04Z02 {
+class N04Z02P01 {
 	
 	public static void main(String[] args) {
 		
