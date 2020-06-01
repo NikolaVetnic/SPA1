@@ -13,7 +13,7 @@
  * 	  ginalnoj listi.
  */
 
-class N03Z02 {
+class N03Z02P01 {
 	
 	public static void main(String[] args) {
 		ListaKaraktera listaKaraktera = new ListaKaraktera();

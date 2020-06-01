@@ -13,24 +13,27 @@
  * 	  ginalnoj listi.
  */
 
-class N03Z02 {
+class N03Z02P02 {
 	
 	public static void main(String[] args) {
 		
 		Lista lista = new Lista();
 		
-		int n = Svetovid.in.readInt("Broj elemenata: ");
+		int n;
+		
+		n = Svetovid.in.readInt("Broj elemenata: ");
 		
 		for (int i = 0; i < n; i++) {
-			char c = Svetovid.in.readChar("Element br. " + i + ": ");
+			
+			char c = Svetovid.in.readChar("Element #" + i + ": ");
 			lista.dodajNaPocetak(c);
 		}
 		
 		System.out.println(lista);
 		
-		System.out.println(lista.velikaSlova());
+		lista.stampajVelika();
 		
-		//~ lista.izbaciMalaSlova();
+		lista.izbaciMalaSlova();
 		
 		System.out.println(lista);
 		
@@ -38,7 +41,6 @@ class N03Z02 {
 		
 		System.out.println(cifre);
 	}
-	
 }
 
 class Lista {
@@ -73,26 +75,35 @@ class Lista {
 	}
 	
 	
+	public void izbaciMalaSlova() {
+		
+		if (prvi == null)
+			return;
+			
+		while ('a' <= prvi.info && prvi.info <= 'z')
+			prvi = prvi.veza;
+			
+		Element pret = prvi;
+		
+		while (pret.veza != null) {
+			
+			if ('a' <= pret.veza.info && pret.veza.info <= 'z')
+				pret.veza = pret.veza.veza;
+			else 	
+				pret = pret.veza;
+		}
+	}
+	
+	
 	public Lista izdvojCifre() {
 		
 		if (prvi == null)
 			return null;
 			
-		Lista cifre = new Lista();
-		
-		Element pom;
-		
-		while (prvi != null && Character.isDigit(prvi.info)) {
-			
-			pom = prvi.veza;
-			
-			prvi.veza = cifre.prvi;
-			cifre.prvi = prvi;
-			
-			prvi = pom;
-		}
+		Lista cifre = new Lista();	
 		
 		Element tek = prvi;
+		Element pom;
 		
 		while (tek != null) {
 			
@@ -114,29 +125,9 @@ class Lista {
 	}
 	
 	
-	public void izbaciMalaSlova() {
+	public String stampajVelika() {
 		
-		if (prvi == null)
-			return;
-			
-		while ('a' <= prvi.info && prvi.info <= 'z')
-			prvi = prvi.veza;
-			
-		Element pret = prvi;
-		
-		while (pret.veza != null) {
-			
-			if ('a' <= pret.veza.info && pret.veza.info <= 'z')
-				pret.veza = pret.veza.veza;
-			else
-				pret = pret.veza;
-		}
-	}
-	
-	
-	public String velikaSlova() {
-		
-		String output = "[ Velika slova : ";
+		String output = "[ Lista (samo velika slova) : ";
 		
 		Element tek = prvi;
 		
@@ -144,7 +135,7 @@ class Lista {
 			
 			if ('A' <= tek.info && tek.info <= 'Z')
 				output += tek + " ";
-				
+			
 			tek = tek.veza;
 		}
 		

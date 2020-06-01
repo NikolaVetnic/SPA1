@@ -10,22 +10,30 @@
  * c) štampa poslednji element liste.
  */
 
-class N03Z01 {
+class N03Z01P03 {
 	
 	public static void main(String[] args) {
 		
 		Lista lista = new Lista();
 		
-		lista.dodajNaPocetak("ananas");
-		lista.dodajNaPocetak("caj");
-		lista.dodajNaPocetak("kokos");
-		lista.dodajNaPocetak("banana");
+		int n;
+		
+		n = Svetovid.in.readInt("Broj elemenata: ");
+		
+		for (int i = 0; i < n; i++) {
+			String s = Svetovid.in.readLine("Element #" + i + ": ");
+			lista.dodajNaPocetak(s);
+		}
 		
 		System.out.println(lista);
 		
-		System.out.println(lista.duziOdSlova(3));
+		lista.duziOd(5);
 		
-		System.out.println(lista.nadjiPoslednji());
+		String s = Svetovid.in.readLine("Element za pretragu: ");
+		
+		lista.nadjiElemente(s);
+		
+		lista.stampajPoslednji();
 	}
 }
 
@@ -61,23 +69,44 @@ class Lista {
 	}
 	
 	
-	public Element nadjiPoslednji() {
+	public int nadjiElemente(String info) {
 		
 		if (prvi == null)
-			return null;
+			return -1;
+			
+		Element tek = prvi;
+		int count = 0;
+		
+		while (tek != null) {
+			
+			if (tek.info.equals(info))
+				count++;
+				
+			tek = tek.veza;
+		}
+		
+		System.out.println("'" + info + "' pronadjen puta: " + count);
+		return count;
+	}
+	
+	
+	public void stampajPoslednji() {
+		
+		if (prvi == null)
+			return;
 			
 		Element pret = prvi;
 		
 		while (pret.veza != null)
 			pret = pret.veza;
 			
-		return pret;
+		System.out.println(pret);
 	}
 	
 	
-	public String duziOdSlova(int n) {
+	public String duziOd(int n) {
 		
-		String output = "[ Duzi od " + n + " slova : ";
+		String output = "[ Lista duzih od " + n + " : ";
 		
 		Element tek = prvi;
 		
@@ -85,12 +114,12 @@ class Lista {
 			
 			if (tek.info.length() > n)
 				output += tek + " ";
-				
+			
 			tek = tek.veza;
 		}
 		
 		return output + "]";
-	} 
+	}
 	
 	
 	public String toString() {
