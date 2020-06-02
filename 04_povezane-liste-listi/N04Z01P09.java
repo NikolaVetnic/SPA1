@@ -16,7 +16,7 @@
  * ima je glumio zadati glumac.
  */
 
-class N04Z01P08 {
+class N04Z01P09 {
 	
 	public static void main(String[] args) {
 		
@@ -25,19 +25,19 @@ class N04Z01P08 {
 		spisak.dodajFilm("Dune");
 			spisak.dodajGlumca("Kyle McLachlan", "Dune");
 			spisak.dodajGlumca("Jurgen Prochnow", "Dune");
-			spisak.dodajGlumca("Kyle McLachlan", "Dune");
-		spisak.dodajFilm("Twin Peaks");
-			spisak.dodajGlumca("Kyle McLachlan", "Twin Peaks");
+			spisak.dodajGlumca("Brad Dourif", "Dune");
 		spisak.dodajFilm("Blade Runner");
 			spisak.dodajGlumca("Harrison Ford", "Blade Runner");
+		spisak.dodajFilm("Twin Peaks");
+			spisak.dodajGlumca("Kyle McLachlan", "Twin Peaks");
 		spisak.dodajFilm("Dune");
 		
 		System.out.println(spisak);
 		
 		spisak.obrisiSveSaGlumcem("Kyle McLachlan");
-		
 		System.out.println(spisak);
 	}
+	
 }
 
 class SpisakFilmova {
@@ -64,7 +64,7 @@ class SpisakFilmova {
 		
 		Film cilj = nadjiFilm(naslov);
 		
-		if (cilj == null)
+		if (cilj == null || nadjiGlumca(ime, naslov) != null)
 			return false;
 			
 		Glumac novi = new Glumac(ime);
@@ -82,14 +82,14 @@ class SpisakFilmova {
 		
 		if (cilj == null || cilj.prviGlumac == null)
 			return null;
-		
+			
 		Glumac tek = cilj.prviGlumac;
 		
 		while (tek != null) {
 			
 			if (tek.ime.equals(ime))
 				return tek;
-				
+			
 			tek = tek.veza;
 		}
 		
@@ -169,6 +169,12 @@ class SpisakFilmova {
 		if (prviFilm == null)
 			return false;
 			
+		if (prviFilm.naslov.equals(naslov)) {
+			
+			prviFilm = prviFilm.veza;
+			return true;
+		}
+		
 		Film pret = prviFilm;
 		
 		while (pret.veza != null) {
@@ -197,7 +203,7 @@ class SpisakFilmova {
 			
 			if (nadjiGlumca(ime, tek.naslov) != null)
 				obrisiFilm(tek.naslov);
-			
+				
 			tek = tek.veza;
 		}
 	}
@@ -205,7 +211,7 @@ class SpisakFilmova {
 	
 	public String toString() {
 		
-		String output = "SPISAK ";
+		String output = "SPISAK FILMOVA ";
 		
 		Film tek = prviFilm;
 		
