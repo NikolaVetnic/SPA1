@@ -15,7 +15,7 @@
  * 6. Prebrojati koliko igracaka je skuplje od unete cene
  */
 
-class N02Z01 {
+class N02Z01P01 {
 
 	public static void main(String[] args) {
 		

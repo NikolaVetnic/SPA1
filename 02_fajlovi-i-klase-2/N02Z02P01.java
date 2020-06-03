@@ -15,7 +15,7 @@
  * 6. Prebrojati koliko studenata je rodjeno pre neke unete godine
  */
 
-class N02Z02 {
+class N02Z02P01 {
 	
 	public static void main(String[] args) {
 		
@@ -29,8 +29,8 @@ class N02Z02 {
 		System.out.println();
 		
 		prezime = Svetovid.in.readLine("Unos novog studenta, prezime: ");
-		ime = Svetovid.in.readLine("Unos novog studenta, prezime: ");
-		god = Svetovid.in.readInt("Unos novog studenta, prezime: ");
+		ime = Svetovid.in.readLine("Unos novog studenta, ime: ");
+		god = Svetovid.in.readInt("Unos novog studenta, godiste: ");
 		spisakStudenata.dodajStudenta(prezime, ime, god);
 		imeFajla = Svetovid.in.readLine("Ime fajla za cuvanje: ");
 		spisakStudenata.snimiFajl(imeFajla);

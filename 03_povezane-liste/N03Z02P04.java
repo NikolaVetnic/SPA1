@@ -13,15 +13,13 @@
  * 	  ginalnoj listi.
  */
 
-class N03Z02P03 {
+class N03Z02P04 {
 	
 	public static void main(String[] args) {
 		
 		Lista lista = new Lista();
 		
-		int n;
-		
-		n = Svetovid.in.readInt("Broj elemenata: ");
+		int n = Svetovid.in.readInt("Elemenata: ");
 		
 		for (int i = 0; i < n; i++) {
 			
@@ -31,10 +29,9 @@ class N03Z02P03 {
 		
 		System.out.println(lista);
 		
-		lista.stampajVelika();
+		System.out.println(lista.stampajVelika());
 		
-		lista.izbaciMalaSlova();
-		
+		lista.izbaciMala();
 		System.out.println(lista);
 		
 		Lista cifre = lista.izdvojCifre();
@@ -75,7 +72,7 @@ class Lista {
 	}
 	
 	
-	public void izbaciMalaSlova() {
+	public void izbaciMala() {
 		
 		if (prvi == null)
 			return;
@@ -84,12 +81,13 @@ class Lista {
 			prvi = prvi.veza;
 			
 		Element pret = prvi;
+		Element pom;
 		
 		while (pret.veza != null) {
 			
 			if ('a' <= pret.veza.info && pret.veza.info <= 'z')
 				pret.veza = pret.veza.veza;
-			else 	
+			else
 				pret = pret.veza;
 		}
 	}
@@ -135,7 +133,7 @@ class Lista {
 			
 			if ('A' <= tek.info && tek.info <= 'Z')
 				output += tek + " ";
-			
+				
 			tek = tek.veza;
 		}
 		
