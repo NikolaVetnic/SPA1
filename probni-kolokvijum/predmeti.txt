@@ -1,0 +1,12 @@
+DS1 Masulovic 100
+DS2 Masulovic 80
+RacunarskaGrafika Savic 20
+SkriptJezici Vidakovic 40
+Analiza Perisic 100
+UEP Radakovic 15
+DS1 Masulovic 100
+DS2 Masulovic 80
+RacunarskaGrafika Savic 20
+SkriptJezici Vidakovic 40
+Analiza Perisic 100
+UEP Radakovic 15
