@@ -5,14 +5,14 @@
  * 
  * 1) Dodati još neko ime na mesto 2.
  * 2) Promeniti ime na poziciji 4 i ispisati šta je bilo na toj pozici-
- * 	  ji.
+ *    ji.
  * 3) Ispisati na ekran elemente na parnim pozicijama.
  * 4) Ispisati elemente koji počinju na slovo “S”.
  * 5) Izbaciti element sa pozicije 3.
  * 6) Izbaciti element koji je jednak unetom.
  * 7) Učitati imena (kao Stringove, svaki u novom redu) iz fajla i uba-
- * 	  citi u LinkedList<String>. Dodati sva imena iz ArrayList-a u prv-
- * 	  om zadatku. Ispisati sva imena u novi fajl.
+ *    citi u LinkedList<String>. Dodati sva imena iz ArrayList-a u prv-
+ *    om zadatku. Ispisati sva imena u novi fajl.
  */
 
 import java.util.ArrayList;
