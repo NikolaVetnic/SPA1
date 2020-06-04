@@ -79,12 +79,10 @@ class N01Z01 {
 				if (input.equals(name)) found = true;
 			}
 			
-			if (!found) {
-				Svetovid.out(filename).println(input);
-				System.out.println("Input added.");
-			} else {
+			if (!found)
+				Svetovid.append(filename).println(input);
+			else
 				System.out.println("Input found in file.");
-			}
 			
 			Svetovid.in(filename).close();
 			
