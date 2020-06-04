@@ -1,0 +1,11 @@
+rec
+moze
+biti
+na
+pocetku
+ovo nije kratak string
+ovo
+sa
+druge
+strane
+jeste
