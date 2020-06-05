@@ -7,12 +7,12 @@
  * c) ispisuje rezultujuću listu u novi fajl.
  */
  
-import java.util.LinkedList;
 import java.util.ArrayList;
-
-class Z01Pr2aP01 {
+import java.util.LinkedList;
+ 
+class Z01Pr2aP02 {
 	
-	static LinkedList<Integer> ucitajFajl(String f) {
+	static public LinkedList<Integer> ucitajListu(String f) {
 		
 		LinkedList<Integer> lista = new LinkedList<>();
 		
@@ -20,8 +20,8 @@ class Z01Pr2aP01 {
 			
 			while (Svetovid.in(f).hasMore()) {
 				
-				int s = Svetovid.in(f).readInt();
-				lista.add(s);
+				int e = Svetovid.in(f).readInt();
+				lista.add(e);
 			}
 			
 			Svetovid.in(f).close();
@@ -31,7 +31,7 @@ class Z01Pr2aP01 {
 	}
 	
 	
-	static void snimiFajl(String f, LinkedList<Integer> lista) {
+	static public void snimiListu(String f, LinkedList<Integer> lista) {
 		
 		for (int i = 0; i < lista.size(); i++)
 			Svetovid.out(f).println(lista.get(i));
@@ -40,28 +40,26 @@ class Z01Pr2aP01 {
 	}
 	
 	
-	public static void main(String[] args) {
+	static public void metodZadatka(LinkedList<Integer> lista, int e) {
 		
-		String f;
-		int e;
 		
-		f = Svetovid.in.readLine("Ucitavanje, fajl: ");
-		LinkedList<Integer> lista = ucitajFajl(f);
-		System.out.println(lista);
 		
-		e = Svetovid.in.readInt("Element za pretragu: ");
+		ArrayList<Integer> pom = new ArrayList<>();
+		pom.add(e);
 		
-		ArrayList<Integer> arr = new ArrayList<>();
-		arr.add(e);
-		
-		if (lista.lastIndexOf(e) < (lista.size() / 2))
+		if (lista.lastIndexOf(e) < lista.size() / 2)
 			lista.remove(lista.lastIndexOf(e));
 		else
-			lista.removeAll(arr);
-			
-		System.out.println(lista);
+			lista.removeAll(pom);
+	}
+	
+	
+	public static void main(String[] args) {
 		
-		f = Svetovid.in.readLine("Snimanje, fajl: ");
-		snimiFajl(f, lista);
+		LinkedList<Integer> lista = ucitajListu("brojevi.txt");
+		
+		metodZadatka(lista, 6);
+		
+		snimiListu("brojevimod.txt", lista);
 	}
 }
