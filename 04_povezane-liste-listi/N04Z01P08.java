@@ -168,6 +168,12 @@ class SpisakFilmova {
 		
 		if (prviFilm == null)
 			return false;
+		
+		if (prviFilm.naslov.equals(naslov)) {
+			
+			prviFilm = prviFilm.veza;
+			return true;
+		}
 			
 		Film pret = prviFilm;
 		

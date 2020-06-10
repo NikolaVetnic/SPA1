@@ -170,8 +170,11 @@ class SpisakFilmova {
 		if (prviFilm == null)
 			return;
 			
-		while (nadjiGlumca(ime, prviFilm.naslov) != null)
+		while (prviFilm != null && nadjiGlumca(ime, prviFilm.naslov) != null)
 			prviFilm = prviFilm.veza;
+		
+		if (prviFilm == null)
+			return;
 			
 		Film pret = prviFilm;
 		

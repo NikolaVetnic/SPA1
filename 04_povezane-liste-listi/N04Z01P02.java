@@ -188,6 +188,8 @@ class SpisakFilmova {
 				pret.veza = pret.veza.veza;
 				return true;
 			}
+			
+			pret = pret.veza;
 		}
 		
 		return false;
