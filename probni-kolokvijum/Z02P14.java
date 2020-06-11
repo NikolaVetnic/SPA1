@@ -181,7 +181,7 @@ class LanacHotela {
 		if (prviHotel == null)
 			return null;
 		
-		Hotel pom;	
+		Hotel pom = null;	
 		
 		if (prviHotel.n.equals(n)) {
 			
@@ -195,9 +195,12 @@ class LanacHotela {
 		
 		while (pret.veza != null && !pret.veza.n.equals(n))
 			pret = pret.veza;
+		
+		if (pret.veza != null) {
 			
-		pom = pret.veza;
-		pret.veza = pret.veza.veza;
+			pom = pret.veza;
+			pret.veza = pret.veza.veza;
+		}
 		
 		return pom;
 	}
