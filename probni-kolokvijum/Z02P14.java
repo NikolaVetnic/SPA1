@@ -30,6 +30,7 @@ class Z02P14 {
 		lanac.dodajHotel("Sloboda", "Xabac");
 			lanac.dodajRadnika("Ivica", 4.50, 25, "Sloboda");
 		lanac.dodajHotel("Hilton", "Beograd");
+			lanac.dodajRadnika("Dragoslav", 5.50, 35, "Hilton");
 		lanac.dodajHotel("Sheraton", "Beograd");
 		lanac.dodajHotel("Centar", "Novi Sad");
 			lanac.dodajRadnika("Ljuba", 2.50, 25, "Centar");
@@ -42,6 +43,9 @@ class Z02P14 {
 		System.out.println(lanac);
 		
 		lanac.zatvoriHotel("Sloboda");
+		System.out.println(lanac);
+		
+		lanac.zatvoriHotel("Hilton");
 		System.out.println(lanac);
 	}
 }
@@ -118,7 +122,7 @@ class LanacHotela {
 	}
 	
 	
-	Hotel prviHotel;
+	Hotel prviHotel, poslHotel;
 	
 	
 	public boolean dodajHotel(String n, String g) {
@@ -133,16 +137,21 @@ class LanacHotela {
 			novi.veza = prviHotel;
 			prviHotel = novi;
 			
-			return true;
-		}
-		
-		Hotel pret = prviHotel;
-		
-		while (pret.veza != null && g.compareTo(pret.veza.g) > 0)
-			pret = pret.veza;
+			if (novi.veza == null)
+				poslHotel = novi;
+		} else {
 			
-		novi.veza = pret.veza;
-		pret.veza = novi;
+			Hotel pret = prviHotel;
+			
+			while (pret.veza != null && g.compareTo(pret.veza.g) > 0)
+				pret = pret.veza;
+				
+			novi.veza = pret.veza;
+			pret.veza = novi;
+			
+			if (novi.veza == null)
+				poslHotel = novi;
+		}
 		
 		return true;
 	}
@@ -164,6 +173,63 @@ class LanacHotela {
 		}
 		
 		return null;
+	}
+	
+	
+	private Hotel obrisiHotel(String n) {
+		
+		if (prviHotel == null)
+			return null;
+		
+		Hotel pom;	
+		
+		if (prviHotel.n.equals(n)) {
+			
+			pom = prviHotel;
+			prviHotel = prviHotel.veza;
+			
+			return pom;
+		}
+		
+		Hotel pret = prviHotel;
+		
+		while (pret.veza != null && !pret.veza.n.equals(n))
+			pret = pret.veza;
+			
+		pom = pret.veza;
+		pret.veza = pret.veza.veza;
+		
+		return pom;
+	}
+	
+	
+	public void zatvoriHotel(String n) {
+		
+		if (prviHotel == null)
+			return;
+			
+		Hotel start = obrisiHotel(n);
+		
+		if (start == null || start.prviRadnik == null || start == poslHotel)
+			return;
+		
+		Radnik pom;
+		
+		while (start.prviRadnik != null) {
+			
+			if (start.prviRadnik.s > 9) {
+				
+				pom = start.prviRadnik.veza;
+				
+				start.prviRadnik.veza = poslHotel.prviRadnik;
+				poslHotel.prviRadnik = start.prviRadnik;
+				
+				start.prviRadnik = pom;
+			} else {
+				
+				start.prviRadnik = start.prviRadnik.veza;
+			}
+		}
 	}
 	
 	
@@ -197,48 +263,6 @@ class LanacHotela {
 		
 		System.out.println("Prosek plata za " + g + ": " + (sum / count));
 		return sum / count;
-	}
-	
-	
-	public void zatvoriHotel(String n) {
-		
-		if (prviHotel == null)
-			return;
-		
-		Hotel pret = prviHotel;
-		Hotel cilj = null;
-		
-		while (pret.veza != null && pret.veza.n.equals(n))
-			pret = pret.veza;
-		
-		if (pret.veza != null) {
-			
-			cilj = pret.veza;
-			pret.veza = pret.veza.veza;
-		}
-		
-		while (pret.veza != null)
-			pret = pret.veza;
-		
-		if (cilj == null || cilj.prviRadnik == null || cilj == pret)
-			return;
-		
-		Radnik pom;
-		
-		while (cilj.prviRadnik != null) {
-			
-			if (cilj.prviRadnik.s > 9) {
-				
-				pom = cilj.prviRadnik.veza;
-				
-				cilj.prviRadnik.veza = pret.prviRadnik;
-				pret.prviRadnik = cilj.prviRadnik;
-				
-				cilj.prviRadnik = pom;
-			} else {
-				cilj.prviRadnik = cilj.prviRadnik.veza;
-			}
-		}
 	}
 	
 	
