@@ -8,7 +8,7 @@
  * 2. Napraviti klasu koja predstavlja jednog studenta. Za svakog stu-
  *    denta se pamti ime, prezime i godina rodjenja. 
  * 3. Podatke o studentima predstaviti novom klasom koja podatke cuva
- * 	  u nizu objekata.
+ *    u nizu objekata.
  * 4. Omoguciti unos novog studenta u spisak i snimiti tako promenjene 
  *    podatke u fajl.
  * 5. Ispisati podatke o studentima sa unetom godinom rodjenja
