@@ -26,8 +26,8 @@ class N04Z01P12 {
 			spisak.dodajGlumca("Kyle McLachlan", "Dune");
 			spisak.dodajGlumca("Francesca Annis", "Dune");
 			spisak.dodajGlumca("Max von Sydow", "Dune");
-		spisak.dodajFilm("Blade Runner");
-			spisak.dodajGlumca("Harrison Ford", "Blade Runner");
+		//~ spisak.dodajFilm("Blade Runner");
+			//~ spisak.dodajGlumca("Harrison Ford", "Blade Runner");
 		spisak.dodajFilm("Dune");
 		spisak.dodajFilm("Twin Peaks");
 			spisak.dodajGlumca("Kyle McLachlan", "Twin Peaks");
@@ -166,9 +166,6 @@ class SpisakFilmova {
 	
 	public void obrisiSveSaGlumcem(String m) {
 		
-		if (prviFilm == null)
-			return;
-			
 		while (prviFilm != null && nadjiGlumca(m, prviFilm.n) != null)
 			prviFilm = prviFilm.veza;
 			
