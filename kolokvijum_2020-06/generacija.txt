@@ -1,0 +1,8 @@
+Anja 10 7
+Vasilije 5 5
+Mia 10 9
+Pavle 9 8
+Marija 7 7
+Mirko 5 6
+Lena 10 8
+Danica 10 6
