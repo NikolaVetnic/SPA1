@@ -32,8 +32,9 @@ class Z03P01 {
 		op.dodajKlub(naziv, vrsta, god);
 		System.out.println(op);
 		
-		god = Svetovid.in.readInt("Prebrojavanje klubova osnovanih pre: ");
-		op.prebrojKlubove(god);
+		vrsta = Svetovid.in.readLine("Prebrojavanje, vrsta: ");
+		god = Svetovid.in.readInt("Prebrojavanje, osnovani pre: ");
+		op.prebrojKlubove(vrsta, god);
 		
 		op.sacuvajFajl("opmod.txt");
 	}
@@ -111,24 +112,16 @@ class Opstina {
 	}
 	
 	
-	public void prebrojKlubove(int god) {
+	public int prebrojKlubove(String vrsta, int god) {
 		
-		int[] count = new int[3];
+		int count = 0;
 		
 		for (int i = 0; i < br; i++)
-			if (spisak[i].god < god) {
-				if (spisak[i].vrsta.equals("kosarka"))
-					count[0]++;
-				else if (spisak[i].vrsta.equals("odbojka"))
-					count[1]++;
-				else
-					count[2]++;
-			}
+			if (spisak[i].vrsta.equals(vrsta) && spisak[i].god < god)
+				count++;
 		
-		System.out.println("Klubova osnovanih pre " + god + ". : ");
-		System.out.println("- kosarkaskih: " + count[0]);
-		System.out.println("- odbojkaskih: " + count[1]);
-		System.out.println("- fudbalskih: " + count[2]);
+		System.out.println("Klubova osnovanih pre " + god + ". (vrsta - " + vrsta + ") : " + count);
+		return count;
 	}
 	
 	
