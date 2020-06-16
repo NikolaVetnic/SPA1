@@ -1,3 +1,22 @@
+/**
+ * Napisati klasu KnjigaRecepata koja predstavlja listu recepata. Svaki
+ * recept u knjizi ima jedinstveni naziv, obeležje da li je postan rec-
+ * ept i listu sastojaka. Svaki sastojak ima naziv i količinu i može se
+ * ponavljati u receptu.
+ * 
+ * Glavna klasa treba da ima i jasan toString() metod (ostale klase ta-
+ * kođe mogu imati). Napisati program koji demonstrira napravljene met-
+ * ode (napisati konkretne primere poziva).
+ * 
+ * Napraviti dodavanje novog recepta i dodavanje sastojaka u recept pr-
+ * ema nazivu. Lista recepata u svakom trenutku mora biti sortirana pr-
+ * ema nazivu.
+ * 
+ * Dodati metod koji vraća novu knjigu recepata sa izdvojenim receptima
+ * koji su posni, a u staroj ostaju ostali. Nova lista je takođe sorti-
+ * rana. Realizovati bez ponovnog zauzimanja memorije.
+ */
+
 class Z02P01 {
 	
 	public static void main(String[] args) {

@@ -8,9 +8,9 @@
  * a) štampanje samo znakova koji su velika slova
  * b) izbacivanje svih znakova koji su mala slova
  * c) izdvajanje u novu listu svih znakova koji su cifre. Rezultat - n-
- * 	  ov objekat istog tipa lista, koristi se ista memorija za elemente
+ *    ov objekat istog tipa lista, koristi se ista memorija za elemente
  *    a elementi u novoj listi treba da su u istom redosledu kao u ori-
- * 	  ginalnoj listi.
+ *    ginalnoj listi.
  */
 
 class N03Z02P02 {
