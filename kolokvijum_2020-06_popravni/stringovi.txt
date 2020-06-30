@@ -1,0 +1,9 @@
+1rec
+2moze
+3biti
+4na
+5pocetku
+6ovo nije kratak string
+7ovo
+8sa
+9drug
