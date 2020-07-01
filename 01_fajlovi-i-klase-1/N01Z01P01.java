@@ -16,7 +16,7 @@
  *    da dopiše string na kraj fajla.
  */
 
-class N01Z01 {
+class N01Z01P01 {
 	
 	
 	static void writeInFile(String filename, String[] strings) {
